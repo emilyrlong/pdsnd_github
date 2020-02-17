@@ -45,7 +45,7 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
 
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    city_error = "Invalid city. Please enter Chicago, New York, or Washington, and be sure to check your spelling."
+    city_error = "Invalid city. Please enter Chicago, New York, or Washington."
     city_question = "Would you like to see data for Chicago, New York, or Washington? "
     city = user_input(city_error, city_question, list(CITY_DATA.keys()))
 
@@ -160,9 +160,9 @@ def time_stats(df):
     # Display the most common day of week:
     if len(df['day_of_week'].unique()) == 1:
         # If there's only one day of the week in the dataset, output this string:
-        print('\nThe only day of the week in this dataset is: ', df['day_of_week'].unique()[0])
+        print('\nThe only day of the week in this dataset is: {}'.format(df['day_of_week'].unique()[0]))
     else:
-        print('\nThe most common day of the week is: ', df['day_of_week'].mode()[0])
+        print('\nThe most common day of the week is: {}'.format(df['day_of_week'].mode()[0]))
 
     # Display the most common start hour:
     popular_hour = df['hour'].mode()[0]
