@@ -16,7 +16,11 @@ The Bikeshare Project is a project in *Python* that analyzes the bikeshare data 
 * Finally, a **main** function is used to run all of the above functions.
 
 ### Files used
-Include the files used
+* bikeshare.py
+* .gitignore
+  * chicago.csv
+  * new_york_city.csv
+  * washington.csv
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
