@@ -23,4 +23,7 @@ The Bikeshare Project is a project in *Python* that analyzes the bikeshare data 
   * washington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+This bikeshare project was completed as a part of the Udacity Programming for Data Science with Python [nanodegree][1] on Jan. 29, 2020. The template version of bikeshare.py and the csv files were all provided by [Udacity][2].
+
+[1]: https://www.udacity.com/course/programming-for-data-science-nanodegree--nd104 "Title"
+[2]: https://www.udacity.com "Title"
