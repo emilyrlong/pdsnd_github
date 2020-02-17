@@ -1,9 +1,9 @@
-### Date created
+#### Date created
 This project was added to GitHub on **Feb. 17, 2020**.
 
 ### Bikeshare Project
 
-### Description
+#### Description
 The Bikeshare Project is a project in *Python* that analyzes the bikeshare data from three cities: Chicago, New York City, and Washington.
 * First, the function **user_input** is created to simplify the process of asking for user input.
 * Then this function is used to ask a user to specify a city, month, and day in the **get_filters** function.
@@ -15,14 +15,14 @@ The Bikeshare Project is a project in *Python* that analyzes the bikeshare data 
 * The **user_stats** function displays the user count, gender, and birth year information.
 * Finally, a **main** function is used to run all of the above functions.
 
-### Files used
+#### Files used
 * bikeshare.py
 * .gitignore
   * chicago.csv
   * new_york_city.csv
   * washington.csv
 
-### Credits
+#### Credits
 This bikeshare project was completed as a part of the Udacity Programming for Data Science with Python [nanodegree][1] on Jan. 29, 2020. The template version of bikeshare.py and the csv files were all provided by [Udacity][2].
 
 [1]: https://www.udacity.com/course/programming-for-data-science-nanodegree--nd104 "Title"
