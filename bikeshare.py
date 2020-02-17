@@ -43,16 +43,16 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city_error = "Invalid city. Please enter Chicago, New York, or Washington, and be sure to check your spelling."
     city_question = "Would you like to see data for Chicago, New York, or Washington? "
     city = user_input(city_error, city_question, list(CITY_DATA.keys()))
-    
+
     # Ask if they would like to filter by month
     month_question = "Would you like to filter the data by month? Please say Yes or No: "
     month_q = user_input("Please say Yes or No", month_question, ['yes','no'])
-    
+
     # get user input for month (all, january, february, ... , june)
     if month_q == "yes":
         monthQ = 'Which month - January, February, March, April, May, or June? '
@@ -72,7 +72,7 @@ def get_filters():
         day = 'all'
 
     print('-'*40)
-    
+
     return city, month, day
 
 
@@ -93,7 +93,7 @@ def load_data(city, month, day):
 
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-    
+
     # create column for hour for analysis in time_stats function
     df['hour'] = df['Start Time'].dt.hour
 
@@ -120,14 +120,14 @@ def load_data(city, month, day):
 def display_data(df):
     """
     Asks the user if they would like to see the raw data, repeats & adds five more rows each time.
-    
+
     Args:
         df - Pandas DataFrame containing city data filtered by month and day
     """
     # Asks the user for the first time if they want to see the data
     data_q = "Would you like to view the raw data? Please say Yes or No: "
     display_q = user_input("Please say Yes or No.", data_q, ['yes','no'])
-    
+
     if display_q == 'yes':
         i = 0
         # change question to "5 more rows of data"
@@ -160,9 +160,9 @@ def time_stats(df):
     # Display the most common day of week:
     if len(df['day_of_week'].unique()) == 1:
         # If there's only one day of the week in the dataset, output this string:
-        print('\nThe only day of the week in this dataset is: ', df['day_of_week'].unique()[0])
+        print('\nThe only day of the week in this dataset is: {}'.format(df['day_of_week'].unique()[0]))
     else:
-        print('\nThe most common day of the week is: ', df['day_of_week'].mode()[0])
+        print('\nThe most common day of the week is: {}'.format(df['day_of_week'].mode()[0]))
 
     # Display the most common start hour:
     popular_hour = df['hour'].mode()[0]
@@ -182,7 +182,7 @@ def station_stats(df):
     start_mode = df['Start Station'].mode()[0]
     start_count = df['Start Station'].value_counts()[0]
     print('\nThe Most Common Start Station is {} with {} trips.'.format(start_mode, start_count))
-    
+
     # display most commonly used end station
     end_mode = df['End Station'].mode()[0]
     end_count = df['End Station'].value_counts()[0]
@@ -192,10 +192,10 @@ def station_stats(df):
     df['Trip Start'] = '\nStart Station: ' + df['Start Station'] + '\nEnd Station: ' + df['End Station']
     trip_mode = df['Trip Start'].mode()[0]
     trip_count = df['Trip Start'].value_counts()[0]
-    
+
     # display most frequent combination of start station and end station trip
     print('\nThe Most Frequent Combination of Stations is: {} \nwith {} trips.'.format(trip_mode, trip_count))
-    
+
     print("\nThis took %s seconds. \n" % (time.time() - start_time))
     print('-'*40)
 
@@ -207,9 +207,9 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # display total travel time
-    total_travel = np.sum(df['Trip Duration'])    
+    total_travel = np.sum(df['Trip Duration'])
     print('\nThe total time spent traveling is {} seconds.'.format(total_travel))
-    
+
     # If the number of seconds is high enough, output the # of years spent biking:
     total_years = int(total_travel // (60 * 60 * 24 * 7 * 52))
     if total_years > 1:
@@ -220,7 +220,7 @@ def trip_duration_stats(df):
     # calculate mean travel time in seconds and minutes
     mean_travel = np.mean(df['Trip Duration'])
     mean_mins = round(mean_travel / 60, 2)
-    
+
     print('\nThe mean travel time is {} seconds (which equals {} minutes.)'.format(round(mean_travel,2), mean_mins))
 
     print("\nThis took %s seconds. \n" % (time.time() - start_time))
@@ -236,7 +236,7 @@ def user_stats(df):
     # Display counts of user types
     user_counts = df['User Type'].value_counts()
     print('\nUser Types:\n', user_counts)
-    
+
     # If statement separates New York & Chicago data from Washington
     if 'Gender' in df.columns:
         # Display counts of gender
@@ -247,14 +247,14 @@ def user_stats(df):
         earliest_bday = int(df['Birth Year'].min())
         recent_bday = int(df['Birth Year'].max())
         bday_mode = int(df['Birth Year'].mode()[0])
-        
+
         # Display earliest, most recent, and most common year of birth
         print('\nThe Earliest Birth Year is {}.'.format(earliest_bday))
         print('\nThe Most Recent Birth Year is {}.'.format(recent_bday))
         print('\nThe Most Common Birth Year is {}.'.format(bday_mode))
     else:
         print('\nGender and birth year information is not available for Washington.')
-        
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
